@@ -17,15 +17,15 @@ model User {
 }
 
 model Barbershop {
-  id                String              @id @default(uuid())
-  name              String
-  address           String
-  phones            String[]
-  description       String
-  imageUrl          String
-  createdAt         DateTime            @default(now())
-  updatedAt         DateTime            @updatedAt
-  BarbershopService BarbershopService[]
+  id          String              @id @default(uuid())
+  name        String
+  address     String
+  phones      String[]
+  description String
+  imageUrl    String
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
+  services    BarbershopService[]
 }
 
 model BarbershopService {
@@ -35,7 +35,7 @@ model BarbershopService {
   imageUrl     String
   price        Decimal    @db.Decimal(10, 2)
   barbershopId String
-  Barbershop   Barbershop @relation(fields: [barbershopId], references: [id])
+  barbershop   Barbershop @relation(fields: [barbershopId], references: [id])
   bookings     Booking[]
 }
 
